@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tech Mahindra</title>
+        <link rel="icon" href="/img/techmfavicon.ico"></link>
+        <link rel="stylesheet" href="/css/styles.min.css"></link>
+    </head>
+    <style>
+        
+.header {
+  overflow: hidden;
+  background-color: black;
+  padding: 10px 10px;
+  position: sticky !important;
+}
+
+.header a {
+  float: left;
+  color: White;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.header a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.header-right {
+  float: right;
+}
+
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .header-right {
+    float: none;
+  }
+  }
+
+        </style>
+    <div class="header" id="myHeader" style="position: sticky;">
+        <a href="#default" class="logo">Tech Mahindra</a>
+        <div class="header-right">
+          <a class="active" href="#home">Home</a>
+          <a href="#contact">Maven</a>
+          <a href="#about">Our Services</a>
+        </div>
+    </div>
+      
+    <body>
+        <div class="chat">
+            <div id="sidebar" class="chat__sidebar">
+
+            </div>
+            <div class="chat__main">
+                <div id="messages" class="chat__messages"></div>
+                
+                <div class="compose">
+                    <form  id="message-form">
+                        <input name="message" autocomplete="off" placeholder="enter message" required>
+                        <button>Send</button>
+                    </form>
+                    <button id="send-location">Share location</button>
+                </div>
+                
+                
+            </div>
+        </div>
+
+        
+        
+        <!-- <button id="increment">add</button> -->
+        
+        <script id="message-template" type="text/html">
+            <div class="message">
+                <p>
+                    <span class="message__name">{{username}}</span>
+                    <span class="message__meta"> {{createdAt}}</span>
+                </p>
+                <p>  {{message}}</p>
+            </div>
+        </script>
+
+        <script id="location-message-template" type="text/html">
+            <div class="message">
+                <p>
+                    <span class="message__name">{{username}}</span>
+                    <span class="message__meta"> {{createdAt}}</span>
+                </p>
+                <a href="{{url}}" target="_blank">My location</a>
+            </div>
+        </script>
+        <script id="sidebar-template" type="text/html">
+            <h2 class="room-title">{{room}}</h2>
+            <h3 class="list-title">Users</h3>
+            <ul class="users">
+                {{#users}}
+                <li>
+                    {{username}}
+                </li>
+                {{/users}}
+            </ul>
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/chat.js"></script>
+
+    </body>
+</html>
